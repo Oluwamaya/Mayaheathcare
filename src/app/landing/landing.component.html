@@ -60,63 +60,8 @@
 							</a>
 						</div>
 						<ul class="main-nav">
-							<li class="active">
-								<a class="bolu text-decoration-none " href="index-2.html">Home</a>
-							</li>
-							<li class="has-submenu">
-								<a class="bolu text-decoration-none " href="#">Doctors <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li class=""><a class="text-decoration-none bolu" href="doctor-dashboard.html">Doctor Dashboard</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="appointments.html">Appointments</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="schedule-timings.html">Schedule Timing</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="my-patients.html">Patients List</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="patient-profile.html">Patients Profile</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="chat-doctor.html">Chat</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="invoices.html">Invoices</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="doctor-profile-settings.html">Profile Settings</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="reviews.html">Reviews</a></li>
-									<li class=""><a class="text-decoration-none bolu" href="doctor-register.html">Doctor Register</a></li>
-								</ul>
-							</li>	
-							<li class="has-submenu">
-								<a class="bolu text-decoration-none " href="#">Patients <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li><a class="bolu text-decoration-none " href="search.html">Search Doctor</a></li>
-									<li><a class="bolu text-decoration-none " href="doctor-profile.html">Doctor Profile</a></li>
-									<li><a class="bolu text-decoration-none " href="booking.html">Booking</a></li>
-									<li><a class="bolu text-decoration-none " href="checkout.html">Checkout</a></li>
-									<li><a class="bolu text-decoration-none " href="booking-success.html">Booking Success</a></li>
-									<li><a class="bolu text-decoration-none " href="patient-dashboard.html">Patient Dashboard</a></li>
-									<li><a class="bolu text-decoration-none " href="favourites.html">Favourites</a></li>
-									<li><a class="bolu text-decoration-none " href="chat.html">Chat</a></li>
-									<li><a class="bolu text-decoration-none " href="profile-settings.html">Profile Settings</a></li>
-									<li><a class="bolu text-decoration-none " href="change-password.html">Change Password</a></li>
-								</ul>
-							</li>	
-							<li class="has-submenu">
-								<a class="bolu text-decoration-none " href="#">Pages <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li><a class="bolu text-decoration-none " href="voice-call.html">Voice Call</a></li>
-									<li><a class="bolu text-decoration-none " href="video-call.html">Video Call</a></li>
-									<li><a class="bolu text-decoration-none " href="search.html">Search Doctors</a></li>
-									<li><a class="bolu text-decoration-none " href="calendar.html">Calendar</a></li>
-									<li><a class="bolu text-decoration-none " href="components.html">Components</a></li>
-									<li class="has-submenu">
-										<a class="bolu text-decoration-none " href="invoices.html">Invoices</a>
-										<ul class="submenu">
-											<li><a class="bolu text-decoration-none " href="invoices.html">Invoices</a></li>
-											<li><a class="bolu text-decoration-none " href="invoice-view.html">Invoice View</a></li>
-										</ul>
-									</li>
-									<li><a class="bolu text-decoration-none " href="blank-page.html">Starter Page</a></li>
-									<li><a class="bolu text-decoration-none " href="login.html">Login</a></li>
-									<li><a class="bolu text-decoration-none " href="register.html">Register</a></li>
-									<li><a class="bolu text-decoration-none " href="forgot-password.html">Forgot Password</a></li>
-								</ul>
-							</li>
-							<li>
-								<a class="bolu text-decoration-none " href="admin/index.html" target="_blank">Admin</a>
-							</li>
+						
+							
 							<li class="login-link">
 								<a href="login.html">Login / Signup</a>
 							</li>
@@ -133,7 +78,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link header-login" href="login.html">login / Signup </a>
+							<a class="nav-link header-login"  routerLink="/register">login / Signup </a>
 						</li>
 					</ul>
 				</nav>
@@ -177,13 +122,13 @@
 						<h2>Clinic and Specialities</h2>
 						<p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					</div>
-					<div class="row justify-content-center">
-						<div class="col-md-9">
+					<div class="row justify-content-center d-flex ">
+						<div class="col-md-9 d-flex ">
 							<!-- Slider -->
-							<div class="specialities-slider slider">
+							<div class="  d-flex justify-content-between align-items-center">
 							
 								<!-- Slider Item -->
-								<div class="speicality-item text-center">
+								<div class="speicality-item text-center ">
 									<div class="speicality-img">
 										<img src="assets/img/specialities/specialities-01.png" class="img-fluid" alt="Speciality">
 										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
@@ -253,16 +198,17 @@
 							<div class="about-content">
 								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
 								<p>web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes</p>					
-								<a href="javascript:;">Read More..</a>
+								<a class="text-decoration-none" href="javascript:;">Read More..</a>
 							</div>
 						</div>
-						<div class="col-lg-8">
-							<div class="doctor-slider slider">
+						<div class="col-md-8 ">
+							
+							<div class="doctor">
 							
 								<!-- Doctor Widget -->
-								<div class="profile-widget">
+								<div class="profile-widget col-8 col-md-4  mx-1 ">
 									<div class="doc-img">
-										<a href="doctor-profile.html">
+										<a routerLink="/doctorProfile">
 											<img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-01.jpg">
 										</a>
 										<a href="javascript:void(0)" class="fav-btn">
@@ -271,7 +217,7 @@
 									</div>
 									<div class="pro-content">
 										<h3 class="title">
-											<a href="doctor-profile.html">Ruby Perrin</a> 
+											<a routerLink="/-doctorProfile">Ruby Perrin</a> 
 											<i class="fas fa-check-circle verified"></i>
 										</h3>
 										<p class="speciality">MDS - Periodontology and Oral Implantology, BDS</p>
@@ -308,7 +254,7 @@
 								<!-- /Doctor Widget -->
 						
 								<!-- Doctor Widget -->
-								<div class="profile-widget">
+								<div class="profile-widget col-8 col-md-4  mx-1">
 									<div class="doc-img">
 										<a href="doctor-profile.html">
 											<img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-02.jpg">
@@ -356,7 +302,7 @@
 								<!-- /Doctor Widget -->
 						
 								<!-- Doctor Widget -->
-								<div class="profile-widget">
+								<div class="profile-widget col-8 col-md-4  mx-1">
 									<div class="doc-img">
 										<a href="doctor-profile.html">
 											<img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-03.jpg">
@@ -404,7 +350,7 @@
 								<!-- /Doctor Widget -->
 						
 								<!-- Doctor Widget -->
-								<div class="profile-widget">
+								<div class="profile-widget col-8 col-md-4  mx-1">
 									<div class="doc-img">
 										<a href="doctor-profile.html">
 											<img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-04.jpg">
@@ -452,7 +398,7 @@
 								<!-- /Doctor Widget -->
 								
 								<!-- Doctor Widget -->
-								<div class="profile-widget">
+								<div class="profile-widget col-8 col-md-4  mx-1">
 									<div class="doc-img">
 										<a href="doctor-profile.html">
 											<img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-05.jpg">
@@ -500,7 +446,7 @@
 								<!-- /Doctor Widget -->
 								
 								<!-- Doctor Widget -->
-								<div class="profile-widget">
+								<div class="profile-widget col-8 col-md-4  mx-1">
 									<div class="doc-img">
 										<a href="doctor-profile.html">
 											<img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-06.jpg">
@@ -548,7 +494,7 @@
 								<!-- /Doctor Widget -->
 								
 								<!-- Doctor Widget -->
-								<div class="profile-widget">
+								<div class="profile-widget col-8 col-md-4  mx-1">
 									<div class="doc-img">
 										<a href="doctor-profile.html">
 											<img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-07.jpg">
@@ -596,7 +542,7 @@
 								<!-- /Doctor Widget -->
 								
 								<!-- Doctor Widget -->
-								<div class="profile-widget">
+								<div class="profile-widget col-8 col-md-4  mx-1">
 									<div class="doc-img">
 										<a href="doctor-profile.html">
 											<img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-08.jpg">
@@ -662,45 +608,49 @@
 								<h2 class="mt-2">Availabe Features in Our Clinic</h2>
 								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
 							</div>	
-							<div class="features-slider slider">
+							<div class="features p-2">
 								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="assets/img/features/feature-01.jpg" class="img-fluid" alt="Feature">
+								<div class="feature-item mx-1  text-center">
+								 <div class="image">
+									<img src="assets/img/features/feature-01.jpg"  alt="Feature">
+								 </div>
 									<p>Patient Ward</p>
 								</div>
 								<!-- /Slider Item -->
 								
 								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="assets/img/features/feature-02.jpg" class="img-fluid" alt="Feature">
+								<div class="feature-item mx-1  text-center">
+									<div class="image">
+										<img src="assets/img/features/feature-02.jpg"  alt="Feature">
+									</div>
 									<p>Test Room</p>
 								</div>
 								<!-- /Slider Item -->
 								
 								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="assets/img/features/feature-03.jpg" class="img-fluid" alt="Feature">
+								<div class="feature-item mx-1  text-center">
+									<div class="image"><img src="assets/img/features/feature-03.jpg"  alt="Feature"></div>
 									<p>ICU</p>
 								</div>
 								<!-- /Slider Item -->
 								
 								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="assets/img/features/feature-04.jpg" class="img-fluid" alt="Feature">
+								<div class="feature-item mx-1  text-center">
+									<div class="image"><img src="assets/img/features/feature-04.jpg"  alt="Feature"></div>
 									<p>Laboratory</p>
 								</div>
 								<!-- /Slider Item -->
 								
 								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="assets/img/features/feature-05.jpg" class="img-fluid" alt="Feature">
+								<div class="feature-item mx-1  text-center">
+									<div class="image"><img src="assets/img/features/feature-05.jpg" alt="Feature"></div>
 									<p>Operation</p>
 								</div>
 								<!-- /Slider Item -->
 								
 								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="assets/img/features/feature-06.jpg" class="img-fluid" alt="Feature">
+								<div class="feature-item mx-1  text-center">
+									<div class="image"><img src="assets/img/features/feature-06.jpg"  alt="Feature"></div>
 									<p>Medical</p>
 								</div>
 								<!-- /Slider Item -->
@@ -730,19 +680,19 @@
 										<div class="social-icon">
 											<ul>
 												<li>
-													<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+													<a class="text-decoration-none" href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
 												</li>
 												<li>
-													<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
+													<a class="text-decoration-none" href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
 												</li>
 												<li>
-													<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+													<a class="text-decoration-none" href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
 												</li>
 												<li>
-													<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+													<a class="text-decoration-none" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
 												</li>
 												<li>
-													<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
+													<a class="text-decoration-none" href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
 												</li>
 											</ul>
 										</div>
@@ -758,11 +708,11 @@
 								<div class="footer-widget footer-menu">
 									<h2 class="footer-title">For Patients</h2>
 									<ul>
-										<li><a href="search.html"><i class="fas fa-angle-double-right"></i> Search for Doctors</a></li>
-										<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
-										<li><a href="register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
-										<li><a href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a></li>
-										<li><a href="patient-dashboard.html"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
+										<li><a class="text-decoration-none" href="search.html"><i class="fas fa-angle-double-right"></i> Search for Doctors</a></li>
+										<li><a class="text-decoration-none" href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+										<li><a class="text-decoration-none" href="register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
+										<li><a class="text-decoration-none" href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a></li>
+										<li><a class="text-decoration-none" href="patient-dashboard.html"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
 									</ul>
 								</div>
 								<!-- /Footer Widget -->
@@ -775,11 +725,11 @@
 								<div class="footer-widget footer-menu">
 									<h2 class="footer-title">For Doctors</h2>
 									<ul>
-										<li><a href="appointments.html"><i class="fas fa-angle-double-right"></i> Appointments</a></li>
-										<li><a href="chat.html"><i class="fas fa-angle-double-right"></i> Chat</a></li>
-										<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
-										<li><a href="doctor-register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
-										<li><a href="doctor-dashboard.html"><i class="fas fa-angle-double-right"></i> Doctor Dashboard</a></li>
+										<li><a class="text-decoration-none" href="appointments.html"><i class="fas fa-angle-double-right"></i> Appointments</a></li>
+										<li><a class="text-decoration-none" href="chat.html"><i class="fas fa-angle-double-right"></i> Chat</a></li>
+										<li><a class="text-decoration-none" href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+										<li><a class="text-decoration-none" href="doctor-register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
+										<li><a class="text-decoration-none" href="doctor-dashboard.html"><i class="fas fa-angle-double-right"></i> Doctor Dashboard</a></li>
 									</ul>
 								</div>
 								<!-- /Footer Widget -->
@@ -824,7 +774,7 @@
 							<div class="row">
 								<div class="col-md-6 col-lg-6">
 									<div class="copyright-text">
-										<p class="mb-0"><a href="templateshub.net">Templates Hub</a></p>
+										<p class="mb-0"><a class="text-decoration-none" href="templateshub.net">Templates Hub</a></p>
 									</div>
 								</div>
 								<div class="col-md-6 col-lg-6">
@@ -832,10 +782,11 @@
 									<!-- Copyright Menu -->
 									<div class="copyright-menu">
 										<ul class="policy-menu">
-											<li><a href="term-condition.html">Terms and Conditions</a></li>
-											<li><a href="privacy-policy.html">Policy</a></li>
+											<li><a class="text-decoration-none" href="term-condition.html">Terms and Conditions</a></li>
+											<li><a class="text-decoration-none" href="privacy-policy.html">Policy</a></li>
 										</ul>
 									</div>
+								
 									<!-- /Copyright Menu -->
 									
 								</div>
@@ -854,19 +805,20 @@
 	   <!-- /Main Wrapper -->
 	  
 		<!-- jQuery -->
-		<script src="assets/js/jquery.min.js"></script>
+		<script src="../../assets/js/jquery.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-		<script src="assets/js/popper.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="../../assets/js/popper.min.js"></script>
+		<script src="../../assets/js/bootstrap.min.js"></script>
 		
 		<!-- Slick JS -->
-		<script src="assets/js/slick.js"></script>
+		<script src="../../assets/js/slick.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="assets/js/script.js"></script>
+		<script src="../../assets/js/script.js"></script>
 		
 	</body>
-
-<!-- doccure/  30 Nov 2019 04:11:53 GMT -->
+	
+	<!-- doccure/  30 Nov 2019 04:11:53 GMT -->
+	<!-- <router-outlet></router-outlet> -->
 </html>
