@@ -18,7 +18,7 @@ export class SignupComponent {
     this.signupForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      number: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -38,7 +38,7 @@ export class SignupComponent {
     // Extract form values safely using the safe navigation operator
     const firstName = this.signupForm.get('firstName')?.value;
     const lastName = this.signupForm.get('lastName')?.value;
-    const number = this.signupForm.get('number')?.value;
+    const email = this.signupForm.get('email')?.value;
     const password = this.signupForm.get('password')?.value;
 
     // Append form values to FormData if they are not undefined
@@ -48,8 +48,8 @@ export class SignupComponent {
     if (lastName !== undefined) {
       formData.append('lastName', lastName);
     }
-    if (number !== undefined) {
-      formData.append('number', number);
+    if (email !== undefined) {
+      formData.append('email', email);
     }
     if (password !== undefined) {
       formData.append('password', password);
@@ -57,13 +57,13 @@ export class SignupComponent {
 
     console.log('FormData:', formData);
 
-    this.http.post<any>("http://localhost/healthbackend/index.php", formData).subscribe((res)=>{
+    this.http.post<any>("http://localhost/healthbackend/Authentication/patientsignup.php", formData).subscribe((res)=>{
     console.log(res);
-    },(error)=>{
-      console.log(error);
-      
-    })
-    this.router.navigate(['/patient-login'])
+  },(error)=>{
+    console.log(error);
+    
+  })
+  this.router.navigate(['/patient-login'])
   }
 }
 

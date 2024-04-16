@@ -12,14 +12,14 @@ import { RouterModule } from '@angular/router';
   styleUrl: './forget-password.component.css'
 })
 export class ForgetPasswordComponent {
-  forgetPass : FormGroup
+  forgetPass : FormGroup;
 constructor(public formBuilder: FormBuilder, public http: HttpClient){
   this.forgetPass = this.formBuilder.group({
-    number : [" ", Validators.required]
+    email : ['', Validators.required]
   }) 
 }
  forgetPassword(){
-  alert("baddest")
+  
   if (this.forgetPass.invalid) {
     // Mark all fields as touched to trigger validation messages
     this.forgetPass.markAllAsTouched();
@@ -27,5 +27,16 @@ constructor(public formBuilder: FormBuilder, public http: HttpClient){
   }
 
   console.log('Form submitted successfully', this.forgetPass.value);
- }
+  const formData =  new FormData()
+  const email = this.forgetPass.get("email")?.value;
+  
+  if (email !== undefined) {
+    formData.append('email', email);
+  }
+  this.http.post<any>("http://localhost/healthbackend/Authentication/forgetPass.php", formData).subscribe((res)=>{
+  console.log(res);
+  },(error)=>{
+    console.log(error);   
+  })
+}
 }

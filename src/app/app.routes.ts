@@ -6,6 +6,8 @@ import { DoctorRegisterComponent } from './doctor-register/doctor-register.compo
 import { PatientLoginComponent } from './patient-login/patient-login.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { PatientdashboardComponent } from './patientdashboard/patientdashboard.component';
 
 export const routes: Routes = [
     {path:"", pathMatch: "full", redirectTo: "index"},
@@ -15,5 +17,8 @@ export const routes: Routes = [
     {path: "doctor-register", component: DoctorRegisterComponent},
     {path: "patient-login", component: PatientLoginComponent},
     {path: "doctor-login", component: DoctorLoginComponent},
-    {path: "forgetPassword",component: ForgetPasswordComponent}
+    {path: "forgetPassword",component: ForgetPasswordComponent},
+    {path: "profileSettings", component: ProfileSettingsComponent},
+    {path: "patientDashboard", component: PatientdashboardComponent}
+
 ];
