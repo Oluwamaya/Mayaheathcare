@@ -47,11 +47,19 @@ export class DoctorRegisterComponent {
     }
     console.log('FormData:', formData);
 
-    this.http.post<any>("", {formData}).subscribe((response)=>{
+    this.http.post<any>("http://localhost/healthbackend/Authentication/docRegister.php", formData).subscribe((response)=>{
    console.log(response);
+   alert(response.user)
+   this.router.navigate(["/doctor-login"])
    
     },(error)=>{
-      console.log(error);  
+      console.log(error.error);  
+      if(error.error == "SyntaxError: Unexpected token"){
+      alert("username already exist")
+      }else{
+
+        alert(error.error.message)
+      }
     })
   }
 
