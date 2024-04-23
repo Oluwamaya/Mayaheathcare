@@ -68,74 +68,95 @@
                       </h3>
                     </div>
 
-                    <!-- Register Form -->
-                    <!-- <form action="https://dreamguys.co.in/demo/doccure/doctor-dashboard.html" (ngSubmit)="register()" >
-  <div class="form-group form-focus">
-    <input type="text" class="form-control floating" name="firstName" [(ngModel)]="firstName" required #firstNameInput="ngModel">
-    <label class="focus-label">FirstName</label>
-    <div *ngIf="firstNameInput.invalid && firstNameInput.touched" class="text-danger">Firstname is required</div>
-  </div>
-  <div class="form-group form-focus">
-    <input type="text" class="form-control floating" name="lastName" [(ngModel)]="lastName" required #lastNameInput="ngModel">
-    <label class="focus-label">LastName</label>
-    <div *ngIf="lastNameInput.invalid && lastNameInput.touched" class="text-danger">Lastname is required</div>
-  </div>
-  <div class="form-group form-focus">
-    <input type="text" class="form-control floating" name="number" [(ngModel)]="number" required #numberInput="ngModel">
-    <label class="focus-label">Mobile Number</label>
-    <div *ngIf="numberInput.invalid && numberInput.touched" class="text-danger">Mobile number is required</div>
-  </div>
-  <div class="form-group form-focus">
-    <input type="password" class="form-control floating" name="password" [(ngModel)]="password" required #passwordInput="ngModel">
-    <label class="focus-label">Create Password</label>
-    <div *ngIf="passwordInput.invalid && passwordInput.touched" class="text-danger">Password is required</div>
-  </div>
-  <div class="text-right">
-    <a class="forgot-link" routerLink="/patient-login">Already have an account?</a>
-  </div>
-  <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Signup</button>
-  <div class="login-or">
-    <span class="or-line"></span>
-    <span class="span-or">or</span>
-  </div>
-  <div class="row form-row social-login">
-    <div class="col-6">
-      <a href="#" class="btn btn-facebook btn-block"><i class="fab fa-facebook-f mr-1"></i> Login</a>
-    </div>
-    <div class="col-6">
-      <a href="#" class="btn btn-google btn-block"><i class="fab fa-google mr-1"></i> Login</a>
-    </div>
-  </div>
-</form> -->
-<form (ngSubmit)="register()" [formGroup]="signupForm" novalidate>
-	<div class="form-group form-focus">
-	  <input type="text" class="form-control floating" formControlName="firstName" placeholder="First Name">
-	  <label class="focus-label">First Name</label>
-	  <div *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched" class="text-danger">First name is required</div>
-	</div>
-  
-	<div class="form-group form-focus">
-	  <input type="text" class="form-control floating" formControlName="lastName" placeholder="Last Name">
-	  <label class="focus-label">Last Name</label>
-	  <div *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched" class="text-danger">Last name is required</div>
-	</div>
-  
-	<div class="form-group form-focus">
-	  <input type="email" class="form-control floating" formControlName="email" placeholder="Email">
-	  <label class="focus-label">Email</label>
-	  <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">Email is required</div>
-	</div>
-  
-	<div class="form-group form-focus">
-	  <input type="password" class="form-control floating" formControlName="password" placeholder="Create Password">
-	  <label class="focus-label">Create Password</label>
-	  <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">Password is required</div>
-	</div>
-  
-	<button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Signup</button>
-  </form>
-  
-  
+                    <form
+                      (ngSubmit)="register()"
+                      [formGroup]="signupForm"
+                      novalidate
+                    >
+                      <div class="form-group form-focus">
+                        <input
+                          type="text"
+                          class="form-control floating"
+                          formControlName="firstName"
+                          placeholder="First Name"
+                        />
+                        <label class="focus-label">First Name</label>
+                        <div
+                          *ngIf="
+                            signupForm.get('firstName')?.invalid &&
+                            signupForm.get('firstName')?.touched
+                          "
+                          class="text-danger"
+                        >
+                          First name is required
+                        </div>
+                      </div>
+
+                      <div class="form-group form-focus">
+                        <input
+                        type="text"
+                        class="form-control floating"
+                          formControlName="lastName"
+                          placeholder="Last Name"
+                        />
+                        <label class="focus-label">Last Name</label>
+                        <div
+                          *ngIf="
+                            signupForm.get('lastName')?.invalid &&
+                            signupForm.get('lastName')?.touched
+                          "
+                          class="text-danger"
+                        >
+                          Last name is required
+                        </div>
+                      </div>
+
+                      <div class="form-group form-focus">
+                        <input
+                          type="email"
+                          class="form-control floating"
+                          formControlName="email"
+                          placeholder="Email"
+                        />
+                        <label class="focus-label">Email</label>
+                        <div
+                          *ngIf="
+                            signupForm.get('email')?.invalid &&
+                            signupForm.get('email')?.touched
+                          "
+                          class="text-danger"
+                        >
+                          Email is required
+                        </div>
+                      </div>
+
+                      <div class="form-group form-focus">
+                        <input
+                          type="password"
+                          class="form-control floating"
+                          formControlName="password"
+                          placeholder="Create Password"
+                        />
+                        <label class="focus-label">Create Password</label>
+                        <div
+                          *ngIf="
+                            signupForm.get('password')?.invalid &&
+                            signupForm.get('password')?.touched
+                          "
+                          class="text-danger"
+                        >
+                          Password is required
+                        </div>
+                      </div>
+
+                      <button
+                        class="btn btn-primary btn-block btn-lg login-btn"
+                        type="submit"
+                      >
+                        Signup
+                      </button>
+                    </form>
+
                     <!-- /Register Form -->
                   </div>
                 </div>

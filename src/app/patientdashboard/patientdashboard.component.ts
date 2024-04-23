@@ -13,6 +13,7 @@ import { Route, Router, RouterModule } from '@angular/router';
 })
 export class PatientdashboardComponent {
   public token: string | null;
+  public userInfo : any = {} ;
   constructor(private http: HttpClient, private router: Router){
 
     this.token = localStorage.getItem("userToken");
@@ -29,13 +30,17 @@ export class PatientdashboardComponent {
 
     const headers = new HttpHeaders ({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.token
+      'Authorization': `Bearer ${this.token}`
     });
-
-    this.http.post<any>("http://localhost/healthbackend/Dashboard/patientDashboard.php", {}, { headers }).subscribe(
+  console.log(headers);
+  
+    this.http.post<any>("http://localhost/healthbackend/Dashboard/pDashboard.php", {}, { headers }).subscribe(
       (response) => {
         console.log("User information:", response);
-        // Handle the user information response here
+        localStorage.setItem("allInfo",JSON.stringify(response.user))
+        this.userInfo = response.user
+        console.log(this.userInfo.dob);
+        
       },
       (error) => {
         console.error("Error fetching user information:", error);
