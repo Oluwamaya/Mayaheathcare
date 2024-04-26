@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-profile-settings',
+  selector: 'app-doc-setting',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule,RouterModule],
-  templateUrl: './profile-settings.component.html',
-  styleUrl: './profile-settings.component.css'
+  imports: [CommonModule , FormsModule, ReactiveFormsModule ,HttpClientModule, RouterModule],
+  templateUrl: './doc-setting.component.html',
+  styleUrl: './doc-setting.component.css'
 })
-export class ProfileSettingsComponent {
+export class DocSettingComponent {
   public userInfo: any = {};
   public newInfo: any = {};
   public selectedFile: File | null = null;
@@ -23,10 +23,20 @@ export class ProfileSettingsComponent {
   }
 
   getUserInfo() {
-    this.userInfo = JSON.parse(localStorage.getItem("allInfo")!) || {};
+    this.userInfo = JSON.parse(localStorage.getItem("docInfo")!) || {};
     console.log(this.userInfo);
     this.newInfo = { ...this.userInfo };
+
+    if (this.newInfo.email == null ) {
+      this.newInfo.email.setAttribute('readonly', 'true');
+  } else {
+      this.newInfo.email.removeAttribute('readonly');
   }
+  
+    
+  }
+
+
 
   onFileChange(event: any) {
     const files = event.target.files;
@@ -45,9 +55,13 @@ export class ProfileSettingsComponent {
     const formData = new FormData();
 
     // Append all input values to the formData
+    formData.append("username", this.newInfo.username);
     formData.append("firstname", this.newInfo.firstname);
     formData.append("lastname", this.newInfo.lastname);
     formData.append("email", this.newInfo.email);
+    formData.append("services", this.newInfo.services);
+    formData.append("specialization", this.newInfo.specialization);
+    formData.append("gender", this.newInfo.gender);
     formData.append("dob", this.newInfo.dob);
     formData.append("address", this.newInfo.address);
     formData.append("city", this.newInfo.city);
@@ -55,7 +69,7 @@ export class ProfileSettingsComponent {
     formData.append("country", this.newInfo.country);
     formData.append("zipcode", this.newInfo.zipcode);
     formData.append("number", this.newInfo.number);
-    formData.append("bloodgroup", this.newInfo.bloodgroup);
+    formData.append("bio", this.newInfo.bio);
     formData.append("id", this.newInfo.id);
 
     // Append image file to the formData
@@ -64,7 +78,7 @@ export class ProfileSettingsComponent {
     }
 
     // Send formData to the backend
-    this.http.post<any>('http://localhost/healthbackend/Dashboard/phpSettings.php', formData)
+    this.http.post<any>('http://localhost/healthbackend/Dashboard/docSettings.php', formData)
       .subscribe(
         response => {
           console.log("Profile updated successfully:", response);
@@ -72,7 +86,7 @@ export class ProfileSettingsComponent {
           // and update localStorage with the updated userInfo
           this.userInfo = { ...this.newInfo };
           localStorage.setItem("allInfo", JSON.stringify(this.userInfo));
-          this.router.navigate(['/patientDashboard'])
+          this.router.navigate(['/doctorProfile'])
         },
         error => {
           console.error("Error updating profile:", error.error);

@@ -81,7 +81,7 @@
               <div class="card">
                 <div class="card-body">
                   <!-- Profile Settings Form -->
-                  <form (ngSubmit)="saveall()">
+                  <form (ngSubmit)="saveall()" enctype="multipart/form-data">
                     <div class="row form-row">
                       <div class="col-12 col-md-12">
                         <div class="form-group">
@@ -98,11 +98,12 @@
                                   ><i class="fa fa-upload"></i> Upload
                                   Photo</span
                                 >
-                                <input type="file" class="upload" />
+                                <input type="file"  (change)="onFileChange($event)" class="profilePic"  />
                               </div>
                               <small class="form-text text-muted"
                                 >Allowed JPG, GIF or PNG. Max size of 2MB</small
                               >
+                              
                             </div>
                           </div>
                         </div>

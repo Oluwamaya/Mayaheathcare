@@ -36,7 +36,7 @@ export class DoctorProfileComponent {
     this.http.post<any>("http://localhost/healthbackend/Dashboard/docDashboard.php", {}, { headers }).subscribe(
       (response) => {
         console.log("User information:", response);
-        localStorage.setItem("allInfo",JSON.stringify(response.user))
+        localStorage.setItem("docInfo",JSON.stringify(response.user))
         this.userInfo = response.user
         console.log(this.userInfo.dob);
         

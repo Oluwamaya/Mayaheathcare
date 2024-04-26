@@ -9,7 +9,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { PatientdashboardComponent } from './patientdashboard/patientdashboard.component';
 import { DoctorRegisterComponent } from './doctor-register/doctor-register.component';
-import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
+import { DocSettingComponent } from './doc-setting/doc-setting.component';
+// import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
 
 export const routes: Routes = [
     {path:"", pathMatch: "full", redirectTo: "Home"},
@@ -22,6 +23,7 @@ export const routes: Routes = [
     {path: "forgetPassword",component: ForgetPasswordComponent},
     {path: "profileSettings", component: ProfileSettingsComponent},
     {path: "patientDashboard", component: PatientdashboardComponent},
-    {path : "doctor" , component: RegisterDoctorComponent}
+    {path: "doctor-settings", component: DocSettingComponent}
+    // {path : "doctor" , component: RegisterDoctorComponent}
 
 ];
