@@ -3,15 +3,20 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-doc-setting',
   standalone: true,
-  imports: [CommonModule , FormsModule, ReactiveFormsModule ,HttpClientModule, RouterModule],
+  imports: [CommonModule , FormsModule, ReactiveFormsModule ,HttpClientModule, RouterModule , MatExpansionModule , MatFormFieldModule ,MatSelectModule],
   templateUrl: './doc-setting.component.html',
   styleUrl: './doc-setting.component.css'
 })
 export class DocSettingComponent {
+  panelOpenState = false;
+  
   public userInfo: any = {};
   public newInfo: any = {};
   public selectedFile: File | null = null;
@@ -22,16 +27,13 @@ export class DocSettingComponent {
     this.getUserInfo();
   }
 
+
   getUserInfo() {
     this.userInfo = JSON.parse(localStorage.getItem("docInfo")!) || {};
     console.log(this.userInfo);
     this.newInfo = { ...this.userInfo };
 
-    if (this.newInfo.email == null ) {
-      this.newInfo.email.setAttribute('readonly', 'true');
-  } else {
-      this.newInfo.email.removeAttribute('readonly');
-  }
+    
   
     
   }
@@ -62,6 +64,7 @@ export class DocSettingComponent {
     formData.append("services", this.newInfo.services);
     formData.append("specialization", this.newInfo.specialization);
     formData.append("gender", this.newInfo.gender);
+    formData.append("price", this.newInfo.price);
     formData.append("dob", this.newInfo.dob);
     formData.append("address", this.newInfo.address);
     formData.append("city", this.newInfo.city);

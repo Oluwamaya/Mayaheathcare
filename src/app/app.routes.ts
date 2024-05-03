@@ -10,6 +10,7 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
 import { PatientdashboardComponent } from './patientdashboard/patientdashboard.component';
 import { DoctorRegisterComponent } from './doctor-register/doctor-register.component';
 import { DocSettingComponent } from './doc-setting/doc-setting.component';
+import { ScheduleTimingComponent } from './schedule-timing/schedule-timing.component';
 // import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
 
 export const routes: Routes = [
@@ -23,7 +24,7 @@ export const routes: Routes = [
     {path: "forgetPassword",component: ForgetPasswordComponent},
     {path: "profileSettings", component: ProfileSettingsComponent},
     {path: "patientDashboard", component: PatientdashboardComponent},
-    {path: "doctor-settings", component: DocSettingComponent}
-    // {path : "doctor" , component: RegisterDoctorComponent}
+    {path: "doctor-settings", component: DocSettingComponent},
+    {path : "schedule-timing" , component: ScheduleTimingComponent}
 
 ];

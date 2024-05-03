@@ -1,0 +1,22 @@
+
+.nav-link{
+    color: green;
+    cursor: pointer; /* Change to your desired color */
+  }
+  .flew{
+    
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100vh !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+  }
+  .edit-link{
+    color: rgb(0, 204, 255) !important;
+    cursor: pointer;
+  }
+  

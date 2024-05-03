@@ -455,110 +455,64 @@
                 </div>
                 <!-- /Contact Details -->
 
-                <!-- Pricing -->
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Pricing</h4>
-
-                    <div class="form-group mb-0">
-                      <div id="pricing_select">
-                        <div
-                          class="custom-control custom-radio custom-control-inline"
-                        >
-                          <input
-                            ([ngmodel])="(newInfo.username)"
-                            type="radio"
-                            id="price_free"
-                            name="rating_option"
-                            class="custom-control-input"
-                            value="price_free"
-                            checked
-                          />
-                          <label class="custom-control-label" for="price_free"
-                            >Free</label
-                          >
-                        </div>
-                        <div
-                          class="custom-control custom-radio custom-control-inline"
-                        >
-                          <input
-                            ([ngmodel])="(newInfo.username)"
-                            type="radio"
-                            id="price_custom"
-                            name="rating_option"
-                            value="custom_price"
-                            class="custom-control-input"
-                          />
-                          <label class="custom-control-label" for="price_custom"
-                            >Custom Price (per hour)</label
-                          >
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      class="row custom_price_cont"
-                      id="custom_price_cont"
-                      style="display: none"
-                    >
-                      <div class="col-md-4">
-                        <input
-                          ([ngmodel])="(newInfo.username)"
-                          type="text"
-                          class="form-control"
-                          id="custom_rating_input"
-                          name="custom_rating_count"
-                          value=""
-                          placeholder="20"
-                        />
-                        <small class="form-text text-muted"
-                          >Custom price you can add</small
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- /Pricing -->
+                
 
                 <!-- Services and Specialization -->
                 <div class="card services-card">
                   <div class="card-body">
                     <h4 class="card-title">Services and Specialization</h4>
                     <div class="form-group">
-                      <label>Services</label>
-                      <input
-                        [(ngModel)]="newInfo.services"
-                        name="services"
-                        type="text"
-                        data-role="tagsinput"
-                        class="input-tags form-control"
-                        placeholder="Enter Services"
-                        name="services"
-                        value="Tooth cleaning "
-                        id="services"
-                      />
-                      <small class="form-text text-muted"
-                        >Note : Type & Press enter to add new services</small
-                      >
+                      
+                      <mat-accordion>
+                        <mat-expansion-panel >
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Speciality
+                            </mat-panel-title>
+                           
+                          </mat-expansion-panel-header>
+                         
+                          <mat-form-field>
+                            <mat-label>Speciality <span class="text-danger">*</span> </mat-label>
+                            <mat-select name="specialization"  [(ngModel)]="newInfo.specialization">
+                              <mat-option>None</mat-option>
+                              <mat-option value="Cardiology">Cardiology</mat-option>
+                              <mat-option value="Neurology">Neurology</mat-option>
+                              <mat-option value="Urology">Urology</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                            <main class="d-flex justify-content-between align-items-center my-3">
+                              <div>
+                                <h6>Service </h6>
+                                <mat-form-field>
+                                  <mat-label>Servies <span class="text-danger">*</span> </mat-label>
+                                  <mat-select name="services" [(ngModel)]="newInfo.services" >
+                                    <mat-option>Select Service</mat-option>
+                                    
+                                    <mat-option value="Surgery">Surgery</mat-option>
+                                    <mat-option value="General Checkup">General CheckUp</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+                              <div>
+                                <h6>Price ($)</h6>
+                                <input class="form-control" type="text" name="price" [(ngModel)]="newInfo.price">
+                              </div>
+                            </main>
+                            
+
+                        </mat-expansion-panel>
+
+
+                        <p>services</p>
+                      </mat-accordion>
+                      
+                      
+                      
+                      
+                      
                     </div>
-                    <div class="form-group mb-0">
-                      <label>Specialization </label>
-                      <input
-                        [(ngModel)]="newInfo.specialization"
-                        name="specialization"
-                        class="input-tags form-control"
-                        type="text"
-                        data-role="tagsinput"
-                        placeholder="Enter Specialization"
-                        name="specialist"
-                        value="Children Care,Dental Care"
-                        id="specialist"
-                      />
-                      <small class="form-text text-muted"
-                        >Note : Type & Press enter to add new
-                        specialization</small
-                      >
-                    </div>
+                    
                   </div>
                 </div>
                 <!-- /Services and Specialization -->
@@ -575,7 +529,7 @@
                               <div class="form-group">
                                 <label>Degree</label>
                                 <input
-                                  ([ngmodel])="(newInfo.username)"
+                                  
                                   type="text"
                                   class="form-control"
                                 />
@@ -585,7 +539,7 @@
                               <div class="form-group">
                                 <label>College/Institute</label>
                                 <input
-                                  ([ngmodel])="(newInfo.username)"
+                                  
                                   type="text"
                                   class="form-control"
                                 />
@@ -595,7 +549,7 @@
                               <div class="form-group">
                                 <label>Year of Completion</label>
                                 <input
-                                  ([ngmodel])="(newInfo.username)"
+                                  
                                   type="text"
                                   class="form-control"
                                 />
@@ -626,7 +580,7 @@
                               <div class="form-group">
                                 <label>Hospital Name</label>
                                 <input
-                                  ([ngmodel])="(newInfo.username)"
+                                  
                                   type="text"
                                   class="form-control"
                                 />
@@ -636,7 +590,7 @@
                               <div class="form-group">
                                 <label>From</label>
                                 <input
-                                  ([ngmodel])="(newInfo.username)"
+                                  
                                   type="text"
                                   class="form-control"
                                 />
@@ -646,7 +600,7 @@
                               <div class="form-group">
                                 <label>To</label>
                                 <input
-                                  ([ngmodel])="(newInfo.username)"
+                                  
                                   type="text"
                                   class="form-control"
                                 />
@@ -656,7 +610,7 @@
                               <div class="form-group">
                                 <label>Designation</label>
                                 <input
-                                  ([ngmodel])="(newInfo.username)"
+                                 
                                   type="text"
                                   class="form-control"
                                 />
@@ -685,7 +639,7 @@
                           <div class="form-group">
                             <label>Awards</label>
                             <input
-                              ([ngmodel])="(newInfo.username)"
+                              
                               type="text"
                               class="form-control"
                             />
@@ -695,7 +649,7 @@
                           <div class="form-group">
                             <label>Year</label>
                             <input
-                              ([ngmodel])="(newInfo.username)"
+                              
                               type="text"
                               class="form-control"
                             />

@@ -59,11 +59,11 @@ export class SignupComponent {
 
     this.http.post<any>("http://localhost/healthbackend/Authentication/patientsignup.php", formData).subscribe((res)=>{
     console.log(res);
+    this.router.navigate(['/patient-login'])
   },(error)=>{
     console.log(error);
     
   })
-  this.router.navigate(['/patient-login'])
   }
 }
 
