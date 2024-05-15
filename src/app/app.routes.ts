@@ -11,6 +11,7 @@ import { PatientdashboardComponent } from './patientdashboard/patientdashboard.c
 import { DoctorRegisterComponent } from './doctor-register/doctor-register.component';
 import { DocSettingComponent } from './doc-setting/doc-setting.component';
 import { ScheduleTimingComponent } from './schedule-timing/schedule-timing.component';
+import { DocAppointmentComponent } from './doc-appointment/doc-appointment.component';
 // import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
 
 export const routes: Routes = [
@@ -25,6 +26,7 @@ export const routes: Routes = [
     {path: "profileSettings", component: ProfileSettingsComponent},
     {path: "patientDashboard", component: PatientdashboardComponent},
     {path: "doctor-settings", component: DocSettingComponent},
-    {path : "schedule-timing" , component: ScheduleTimingComponent}
+    {path : "schedule-timing" , component: ScheduleTimingComponent},
+    {path : "doctors-appointment" , component: DocAppointmentComponent}
 
 ];

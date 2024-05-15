@@ -19,25 +19,4 @@
     color: rgb(0, 204, 255) !important;
     cursor: pointer;
   }
-  .add-more{
-    cursor: pointer;
-  }
-  .try{
-    display: flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-  
-
-
-  }
-  .texto{
-    width: fit-content;
-    background-color: rgb(217,83,79);
-    border-radius: 10px;
-    padding: 3px 10px;
-    margin: 0 10px;
-    color:white;
-  }
-  
   

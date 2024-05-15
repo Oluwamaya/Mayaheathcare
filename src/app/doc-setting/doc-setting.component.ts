@@ -31,11 +31,7 @@ export class DocSettingComponent {
   getUserInfo() {
     this.userInfo = JSON.parse(localStorage.getItem("docInfo")!) || {};
     console.log(this.userInfo);
-    this.newInfo = { ...this.userInfo };
-
-    
-  
-    
+    this.newInfo = { ...this.userInfo };      
   }
 
 

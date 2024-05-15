@@ -1,0 +1,72 @@
+<!-- Day Time slot Modals -->
+
+  <div class="schedule-nav">
+    <ul class="nav nav-tabs nav-justified">
+      <li class="nav-item" *ngFor="let day of daysOfWeek">
+        <a (click)="toggleVisibility(day)" class="nav-link">{{day}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Your HTML template -->
+<div *ngFor="let day of daysOfWeek" [style.display]="isViDays[day] ? 'block' : 'none'" class="modal fade" id="{{day}}Modal" tabindex="-1" role="dialog" [attr.aria-labelledby]="'{{day}}ModalLabel'" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{day | titlecase}} Time Slots</h5>
+          <button type="button" class="close" (click)="hideModal(day)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="submitAppointment(day)">
+            <div class="hours-info">
+                <div *ngFor="let timeSlot of appointments[day]; let index = index" class="row form-row hours-cont">
+                    
+                    <div class="col-12 col-md-6">
+                      <div class="form-group">
+                        <label>Start Time</label>
+                        <select name="startTime" [(ngModel)]="timeSlot.startTime" class="form-control">
+                          <option>-</option>
+                          <option>12.00 am</option>
+                          <option>12.30 am</option>
+                          <option>1.00 am</option>
+                          <option>1.30 am</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="form-group">
+                        <label>End Time</label>
+                        <select name="endTime" [(ngModel)]="timeSlot.endTime" class="form-control">
+                          <option>-</option>
+                          <option>12.00 am</option>
+                          <option>12.30 am</option>
+                          <option>1.00 am</option>
+                          <option>1.30 am</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <!-- <button type="button" class="btn btn-danger"  (click)="deleteTimeSlot({ day: day, index: index })">Delete</button> -->
+                  </div>
+            </div>
+            <div class="add-more mb-3">
+              <a href="javascript:void(0);" class="add-hours" (click)="addTimeSlot(day )">
+                <i class="fa fa-plus-circle"></i> Add More
+              </a>
+            </div>
+            <div class="submit-section text-center">
+              <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- /Day Time slot Modals -->
+  

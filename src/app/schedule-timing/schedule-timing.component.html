@@ -75,17 +75,20 @@
                 <div class="widget-profile pro-widget-content">
                   <div class="profile-info-widget">
                     <a href="#" class="booking-doc-img">
-                      <img
-                        src="../../assets/img/doctors/doctor-thumb-02.jpg"
-                        alt="User Image"
-                      />
+                      <img [src]="userInfo.profilePic" alt="User Image" />
                     </a>
                     <div class="profile-det-info">
-                      <h3>Dr. Darren Elder</h3>
+                      <h3>Dr {{ userInfo.firstname }}</h3>
 
                       <div class="patient-details">
                         <h5 class="mb-0">
-                          BDS, MDS - Oral & Maxillofacial Surgery
+                          {{
+                            this.userInfo.specialization == null
+                              ? "Services and Specialization"
+                              : this.userInfo.services +
+                                "," +
+                                this.userInfo.specialization
+                          }}
                         </h5>
                       </div>
                     </div>
@@ -101,7 +104,7 @@
                         </a>
                       </li>
                       <li>
-                        <a href="appointments.html">
+                        <a routerLink="/doctors-appointment">
                           <i class="fas fa-calendar-check"></i>
                           <span>Appointments</span>
                         </a>
@@ -168,243 +171,462 @@
               <!-- /Profile Sidebar -->
             </div>
 
-            <div class="col-md-7 col-lg-8 col-xl-9">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">Schedule Timings</h4>
-                      <div class="profile-box">
-                        <div class="row">
-                          <div class="col-lg-4">
-                            <div class="form-group">
-                              <label>Timing Slot Duration</label>
-                              <select class="select form-control">
-                                <option>-</option>
-                                <option>15 mins</option>
-                                <option selected="selected">30 mins</option>
-                                <option>45 mins</option>
-                                <option>1 Hour</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div [ngSwitch]="activeDay" class="col-md-12">
-                            <div class="card schedule-widget mb-0">
-                              <!-- Schedule Header -->
-                              <div class="schedule-header">
-                                <!-- Schedule Nav -->
-                                <div class="schedule-nav">
-                                  <ul class="nav nav-tabs nav-justified">
-                                    <li class="nav-item">
-                                      <a [class.active]="activeDay === 'sunday'" (click)="setActiveDay('sunday')" class="nav-link">Sunday</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a [class.active]="activeDay === 'monday'" (click)="setActiveDay('monday')" class="nav-link">Monday</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a [class.active]="activeDay === 'tuesday'" (click)="setActiveDay('tuesday')" class="nav-link">Tuesday</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a [class.active]="activeDay === 'wednesday'" (click)="setActiveDay('wednesday')" class="nav-link">Wednesday</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a [class.active]="activeDay === 'thursday'" (click)="setActiveDay('thursday')" class="nav-link">Thursday</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a [class.active]="activeDay === 'friday'" (click)="setActiveDay('friday')" class="nav-link">Friday</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a [class.active]="activeDay === 'saturday'" (click)="setActiveDay('saturday')" class="nav-link">Saturday</a>
-                                    </li>
-                                  
-                                  </ul>
-                                </div>
-                                <!-- /Schedule Nav -->
-                              </div>
-                              <!-- /Schedule Header -->
-                             
-                              <!-- Schedule Content -->
-                              <div class="tab-content schedule-cont">
-                                <!-- Sunday Slot -->
-                                <div  *ngSwitchCase="'sunday'" >
-                                  <h4
-                                    class="card-title d-flex justify-content-between"
-                                  >
-                                    <span>Time Slots</span>
-                                    <a
-                                      class="edit-link"
-                                    
-                                      (click)="toggleViSun()"
-                                      ><i class="fa fa-plus-circle"></i> Add
-                                      Slot</a
-                                    >
-                                  </h4>
-                                  <p class="text-muted mb-0">Not Available</p>
-                                </div>
-                                <!-- /Sunday Slot -->
-
-                                <!-- Monday Slot -->
-                                <div
-                                *ngSwitchCase="'monday'"
-                                  
-                                >
-                                  <h4
-                                    class="card-title d-flex justify-content-between"
-                                  >
-                                    <span>Time Slots</span>
-                                    <a
-                                      class="edit-link"
-                                      (click)="toggleViMon()"
-                                      ><i class="fa fa-edit mr-1"></i>Edit</a
-                                    >
-                                  </h4>
-
-                                  <!-- Slot List -->
-                                  <div class="doc-times">
-                                    <div class="doc-slot-list">
-                                      8:00 pm - 11:30 pm
-                                      <a
-                                        href="javascript:void(0)"
-                                        class="delete_schedule"
-                                      >
-                                        <i class="fa fa-times"></i>
-                                      </a>
-                                    </div>
-                                    <div class="doc-slot-list">
-                                      11:30 pm - 1:30 pm
-                                      <a
-                                        href="javascript:void(0)"
-                                        class="delete_schedule"
-                                      >
-                                        <i class="fa fa-times"></i>
-                                      </a>
-                                    </div>
-                                    <div class="doc-slot-list">
-                                      3:00 pm - 5:00 pm
-                                      <a
-                                        href="javascript:void(0)"
-                                        class="delete_schedule"
-                                      >
-                                        <i class="fa fa-times"></i>
-                                      </a>
-                                    </div>
-                                    <div class="doc-slot-list">
-                                      6:00 pm - 11:00 pm
-                                      <a
-                                        href="javascript:void(0)"
-                                        class="delete_schedule"
-                                      >
-                                        <i class="fa fa-times"></i>
-                                      </a>
-                                    </div>
-                                  </div>
-                                  <!-- /Slot List -->
-                                </div>
-                                <!-- /Monday Slot -->
-
-                                <!-- Tuesday Slot -->
-                                <div *ngSwitchCase="'tuesday'" >
-                                  <h4
-                                    class="card-title d-flex justify-content-between"
-                                  >
-                                    <span>Time Slots</span>
-                                    <a
-                                      class="edit-link"
-                                      (click)="toggleViTues()"
-                                      ><i class="fa fa-plus-circle"></i> Add
-                                      Slot</a
-                                    >
-                                  </h4>
-                                  <p class="text-muted mb-0">Not Available</p>
-                                </div>
-                                <!-- /Tuesday Slot -->
-
-                                <!-- Wednesday Slot -->
-                                <div *ngSwitchCase="'wednesday'" >
-                                  <h4
-                                    class="card-title d-flex justify-content-between"
-                                  >
-                                    <span>Time Slots</span>
-                                    <a
-                                      class="edit-link"
-                                        (click)="toggleViWed()"
-                                      ><i class="fa fa-plus-circle"></i> Add
-                                      Slot</a
-                                    >
-                                  </h4>
-                                  <p class="text-muted mb-0">Not Available</p>
-                                </div>
-                                <!-- /Wednesday Slot -->
-
-                                <!-- Thursday Slot -->
-                                <div *ngSwitchCase="'thursday'" >
-                                  <h4
-                                    class="card-title d-flex justify-content-between"
-                                  >
-                                    <span>Time Slots</span>
-                                    <a
-                                      class="edit-link"
-                                        (click)="toggleViThurs()"
-                                      ><i class="fa fa-plus-circle"></i> Add
-                                      Slot</a
-                                    >
-                                  </h4>
-                                  <p class="text-muted mb-0">Not Available</p>
-                                </div>
-                                <!-- /Thursday Slot -->
-
-                                <!-- Friday Slot -->
-                                <div *ngSwitchCase="'friday'" >
-                                  <h4
-                                    class="card-title d-flex justify-content-between"
-                                  >
-                                    <span>Time Slots</span>
-                                    <a
-                                      class="edit-link"
-                                        (click)="toggleViFri()"
-                                      ><i class="fa fa-plus-circle"></i> Add
-                                      Slot</a
-                                    >
-                                  </h4>
-                                  <p class="text-muted mb-0">Not Available</p>
-                                </div>
-                                <!-- /Friday Slot -->
-
-                                <!-- Saturday Slot -->
-                                <div *ngSwitchCase="'saturday'" >
-                                  <h4
-                                    class="card-title d-flex justify-content-between"
-                                  >
-                                    <span>Time Slots</span>
-                                    <a
-                                      class="edit-link"
-                                        (click)="toggleViSat()"
-                                      ><i class="fa fa-plus-circle"></i> Add
-                                      Slot</a
-                                    >
-                                  </h4>
-                                  <p class="text-muted mb-0">Not Available</p>
-                                </div>
-                                <!-- /Saturday Slot -->
-                              </div>
-                              <!-- /Schedule Content -->
-                            </div>
-                            <div></div>
-                          </div>
-                        </div>
-                      </div>
+    <div class="col-md-7 col-lg-8 col-xl-9">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Schedule Timings</h4>
+              <div class="profile-box">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Timing Slot Duration</label>
+                      <select class="select form-control">
+                        <option>-</option>
+                        <option>15 mins</option>
+                        <option selected="selected">30 mins</option>
+                        <option>45 mins</option>
+                        <option>1 Hour</option>
+                      </select>
                     </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div [ngSwitch]="activeDay" class="col-md-12">
+                    <div class="card schedule-widget mb-0">
+                      <!-- Schedule Header -->
+                      <div class="schedule-header">
+                        <!-- Schedule Nav -->
+                        <div class="schedule-nav">
+                          <ul class="nav nav-tabs nav-justified">
+                            <li class="nav-item">
+                              <a
+                                [class.active]="activeDay === 'sunday'"
+                                (click)="setActiveDay('sunday')"
+                                class="nav-link"
+                                >Sunday</a
+                              >
+                            </li>
+                            <li class="nav-item">
+                              <a
+                                [class.active]="activeDay === 'monday'"
+                                (click)="setActiveDay('monday')"
+                                class="nav-link"
+                                >Monday</a
+                              >
+                            </li>
+                            <li class="nav-item">
+                              <a
+                                [class.active]="activeDay === 'tuesday'"
+                                (click)="setActiveDay('tuesday')"
+                                class="nav-link"
+                                >Tuesday</a
+                              >
+                            </li>
+                            <li class="nav-item">
+                              <a
+                                [class.active]="
+                                  activeDay === 'wednesday'
+                                "
+                                (click)="setActiveDay('wednesday')"
+                                class="nav-link"
+                                >Wednesday</a
+                              >
+                            </li>
+                            <li class="nav-item">
+                              <a
+                                [class.active]="
+                                  activeDay === 'thursday'
+                                "
+                                (click)="setActiveDay('thursday')"
+                                class="nav-link"
+                                >Thursday</a
+                              >
+                            </li>
+                            <li class="nav-item">
+                              <a
+                                [class.active]="activeDay === 'friday'"
+                                (click)="setActiveDay('friday')"
+                                class="nav-link"
+                                >Friday</a
+                              >
+                            </li>
+                            <li class="nav-item">
+                              <a
+                                [class.active]="
+                                  activeDay === 'saturday'
+                                "
+                                (click)="setActiveDay('saturday')"
+                                class="nav-link"
+                                >Saturday</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- /Schedule Nav -->
+                      </div>
+                      <!-- /Schedule Header -->
+
+                      <!-- Schedule Content -->
+                      <div class="tab-content schedule-cont">
+                        <!-- Sunday Slot -->
+                        <div *ngSwitchCase="'sunday'">
+                          <h4
+                            class="card-title d-flex justify-content-between"
+                          >
+                            <span>Time Slots</span>
+                            <a class="edit-link" (click)="toggleViSun()"
+                              ><i class="fa fa-plus-circle"></i> Add
+                              Slot</a
+                            >
+                          </h4>
+
+                          <div *ngIf="fetchSchedule" class="try">
+                            <ng-container
+                              *ngIf="
+                                isSundayAvailable();
+                                else notAvailable
+                              "
+                            >
+                              <div 
+                                *ngFor="let schedule of fetchSchedule"
+                              >
+                                <div
+                                  
+                                  *ngIf="schedule.dow === 'Sunday'"
+                                >
+                                  <p
+                                    class="texto"
+                                  >
+                                    {{ schedule.startTime }} -
+                                    {{ schedule.endTime }}
+                                    <button class="btn btn-light rounded rounded-circle" (click)="del(schedule.id)">x</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-template #notAvailable>
+                              <div
+                                class="d-flex mx-2 justify-content-around align-items-center"
+                              >
+                                <p class="text-dark text-bold">
+                                  Not Available
+                                </p>
+                              </div>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <!-- /Sunday Slot -->
+
+                        <!-- Monday Slot -->
+                        <div *ngSwitchCase="'monday'">
+                          <h4
+                            class="card-title d-flex justify-content-between"
+                          >
+                            <span>Time Slots</span>
+                            <a class="edit-link" (click)="toggleViMon()"
+                              ><i class="fa fa-edit mr-1"></i>Edit</a
+                            >
+                          </h4>
+
+                          <!-- Slot List -->
+                          <div *ngIf="fetchSchedule" class="try">
+                            <ng-container
+                              *ngIf="
+                                isMondayAvailable();
+                                else notAvailable
+                              "
+                            >
+                              <div 
+                                *ngFor="let schedule of fetchSchedule"
+                              >
+                                <div
+                                  
+                                  *ngIf="schedule.dow === 'Monday'"
+                                >
+                                  <p
+                                    class="texto"
+                                  >
+                                    {{ schedule.startTime }} -
+                                    {{ schedule.endTime }}
+                                    <button class="btn btn-light rounded rounded-circle" (click)="del(schedule.id)">x</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-template #notAvailable>
+                              <div
+                                class="d-flex mx-2 justify-content-around align-items-center"
+                              >
+                                <p class="text-dark text-bold">
+                                  Not Available
+                                </p>
+                              </div>
+                            </ng-template>
+                          </div>
+                          <!-- /Slot List -->
+                        </div>
+                        <!-- /Monday Slot -->
+
+                        <!-- Tuesday Slot -->
+                        <div *ngSwitchCase="'tuesday'">
+                          <h4
+                            class="card-title d-flex justify-content-between"
+                          >
+                            <span>Time Slots</span>
+                            <a
+                              class="edit-link"
+                              (click)="toggleViTues()"
+                              ><i class="fa fa-plus-circle"></i> Add
+                              Slot</a
+                            >
+                          </h4>
+                          <div *ngIf="fetchSchedule" class="try">
+                            <ng-container
+                              *ngIf="
+                                isTuesdayAvailable();
+                                else notAvailable
+                              "
+                            >
+                              <div 
+                                *ngFor="let schedule of fetchSchedule"
+                              >
+                                <div
+                                  
+                                  *ngIf="schedule.dow === 'Tuesday'"
+                                >
+                                  <p
+                                    class="texto"
+                                  >
+                                    {{ schedule.startTime }} -
+                                    {{ schedule.endTime }}
+                                    <button class="btn btn-light rounded rounded-circle" (click)="del(schedule.id)">x</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-template #notAvailable>
+                              <div
+                                class="d-flex mx-2 justify-content-around align-items-center"
+                              >
+                                <p class="text-dark text-bold">
+                                  Not Available
+                                </p>
+                              </div>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <!-- /Tuesday Slot -->
+
+                        <!-- Wednesday Slot -->
+                        <div *ngSwitchCase="'wednesday'">
+                          <h4
+                            class="card-title d-flex justify-content-between"
+                          >
+                            <span>Time Slots</span>
+                            <a class="edit-link" (click)="toggleViWed()"
+                              ><i class="fa fa-plus-circle"></i> Add
+                              Slot</a
+                            >
+                          </h4>
+                          <div *ngIf="fetchSchedule" class="try">
+                            <ng-container
+                              *ngIf="
+                                isWednesdayAvailable();
+                                else notAvailable
+                              "
+                            >
+                              <div 
+                                *ngFor="let schedule of fetchSchedule"
+                              >
+                                <div
+                                  
+                                  *ngIf="schedule.dow === 'Wednesday'"
+                                >
+                                  <p
+                                    class="texto"
+                                  >
+                                    {{ schedule.startTime }} -
+                                    {{ schedule.endTime }}
+                                    <button class="btn btn-light rounded rounded-circle" (click)="del(schedule.id)">x</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-template #notAvailable>
+                              <div
+                                class="d-flex mx-2 justify-content-around align-items-center"
+                              >
+                                <p class="text-dark text-bold">
+                                  Not Available
+                                </p>
+                              </div>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <!-- /Wednesday Slot -->
+
+                        <!-- Thursday Slot -->
+                        <div *ngSwitchCase="'thursday'">
+                          <h4
+                            class="card-title d-flex justify-content-between"
+                          >
+                            <span>Time Slots</span>
+                            <a
+                              class="edit-link"
+                              (click)="toggleViThurs()"
+                              ><i class="fa fa-plus-circle"></i> Add
+                              Slot</a
+                            >
+                          </h4>
+                          <div *ngIf="fetchSchedule" class="try">
+                            <ng-container
+                              *ngIf="
+                                isThursdayAvailable();
+                                else notAvailable
+                              "
+                            >
+                              <div 
+                                *ngFor="let schedule of fetchSchedule"
+                              >
+                                <div
+                                  
+                                  *ngIf="schedule.dow === 'Thursday'"
+                                >
+                                  <p
+                                    class="texto"
+                                  >
+                                    {{ schedule.startTime }} -
+                                    {{ schedule.endTime }}
+                                    <button class="btn btn-light rounded rounded-circle" (click)="del(schedule.id)">x</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-template #notAvailable>
+                              <div
+                                class="d-flex mx-2 justify-content-around align-items-center"
+                              >
+                                <p class="text-dark text-bold">
+                                  Not Available
+                                </p>
+                              </div>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <!-- /Thursday Slot -->
+
+                        <!-- Friday Slot -->
+                        <div *ngSwitchCase="'friday'">
+                          <h4
+                            class="card-title d-flex justify-content-between"
+                          >
+                            <span>Time Slots</span>
+                            <a class="edit-link" (click)="toggleViFri()"
+                              ><i class="fa fa-plus-circle"></i> Add
+                              Slot</a
+                            >
+                          </h4>
+                          <div *ngIf="fetchSchedule" class="try">
+                            <ng-container
+                              *ngIf="
+                                isFridayAvailable();
+                                else notAvailable
+                              "
+                            >
+                              <div 
+                                *ngFor="let schedule of fetchSchedule"
+                              >
+                                <div
+                                  
+                                  *ngIf="schedule.dow === 'Friday'"
+                                >
+                                  <p
+                                    class="texto"
+                                  >
+                                    {{ schedule.startTime }} -
+                                    {{ schedule.endTime }}
+                                    <button class="btn btn-light rounded rounded-circle" (click)="del(schedule.id)">x</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-template #notAvailable>
+                              <div
+                                class="d-flex mx-2 justify-content-around align-items-center"
+                              >
+                                <p class="text-dark text-bold">
+                                  Not Available
+                                </p>
+                              </div>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <!-- /Friday Slot -->
+
+                        <!-- Saturday Slot -->
+                        <div *ngSwitchCase="'saturday'">
+                          <h4
+                            class="card-title d-flex justify-content-between"
+                          >
+                            <span>Time Slots</span>
+                            <a class="edit-link" (click)="toggleViSat()"
+                              ><i class="fa fa-plus-circle"></i> Add
+                              Slot</a
+                            >
+                          </h4>
+                          <div *ngIf="fetchSchedule" class="try">
+                            <ng-container
+                              *ngIf="
+                                isSaturdayAvailable();
+                                else notAvailable
+                              "
+                            >
+                              <div 
+                                *ngFor="let schedule of fetchSchedule"
+                              >
+                                <div
+                                  
+                                  *ngIf="schedule.dow === 'Saturday'"
+                                >
+                                  <p
+                                    class="texto"
+                                  >
+                                    {{ schedule.startTime }} -
+                                    {{ schedule.endTime }}
+                                    <button class="btn btn-light rounded rounded-circle" (click)="del(schedule.id)">x</button>
+                                  </p>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-template #notAvailable>
+                              <div
+                                class="d-flex mx-2 justify-content-around align-items-center"
+                              >
+                                <p class="text-dark text-bold">
+                                  Not Available
+                                </p>
+                              </div>
+                            </ng-template>
+                          </div>
+                        </div>
+                        <!-- /Saturday Slot -->
+                      </div>
+                      <!-- /Schedule Content -->
+                    </div>
+                    <div></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <main class="my-4 m-auto bg-black">
-          
-        </main>
+      </div>
+    </div>
+          </div>
+        </div>
+        <main class="my-4 m-auto bg-black"></main>
       </div>
       <!-- /Page Content -->
 
@@ -601,29 +823,32 @@
 
     <!-- Add Time Slot Modal -->
     <!--sunday Time slot Modal-->
-    <div class="  flew"  [style.display]="isViSun ? 'block' : 'none'" >
+    <div class="flew" [style.display]="isViSun ? 'block' : 'none'">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Sunday Time Slots</h5>
-            <button
-              type="button"
-              class="close"
-              (click)="hideMoSun()"
-            >
+            <button type="button" class="close" (click)="hideMoSun()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form (ngSubmit)="submtiMe()">
+            <form (ngSubmit)="subSun()">
               <div class="hours-info">
-                <div class="row form-row hours-cont">
+                <div
+                  class="row form-row hours-cont"
+                  *ngFor="let slot of sunslow; let i = index"
+                >
                   <div class="col-12 col-md-10">
                     <div class="row form-row">
                       <div class="col-12 col-md-6">
                         <div class="form-group">
                           <label>Start Time</label>
-                          <select name="startTime" [(ngModel)]="flow.startTime" class="form-control">
+                          <select
+                            name="startTime"
+                            [(ngModel)]="slot.startTime"
+                            class="form-control"
+                          >
                             <option>-</option>
                             <option>12.00 am</option>
                             <option>12.30 am</option>
@@ -635,7 +860,11 @@
                       <div class="col-12 col-md-6">
                         <div class="form-group">
                           <label>End Time</label>
-                          <select name="endTime" [(ngModel)]="flow.endTime" class="form-control">
+                          <select
+                            name="endTime"
+                            [(ngModel)]="slot.endTime"
+                            class="form-control"
+                          >
                             <option>-</option>
                             <option>12.00 am</option>
                             <option>12.30 am</option>
@@ -650,7 +879,7 @@
               </div>
 
               <div class="add-more mb-3">
-                <a href="javascript:void(0);" class="add-hours"
+                <a (click)="addMoreSun()" class="add-hours"
                   ><i class="fa fa-plus-circle"></i> Add More</a
                 >
               </div>
@@ -665,95 +894,33 @@
       </div>
     </div>
     <!--sunday Time slot Modal-->
-      <!--Monday Time slot Modal-->
-      <div class="  flew"  [style.display]="isViMon ? 'block' : 'none'" >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Monday Time Slots</h5>
-              <button
-                type="button"
-                class="close"
-                (click)="hideMoMon()"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form (ngSubmit)="submtiMe()">
-                <div class="hours-info">
-                  <div class="row form-row hours-cont">
-                    <div class="col-12 col-md-10">
-                      <div class="row form-row">
-                        <div class="col-12 col-md-6">
-                          <div class="form-group">
-                            <label>Start Time</label>
-                            <select name="startTime" [(ngModel)]="flow.startTime" class="form-control">
-                              <option>-</option>
-                              <option>12.00 am</option>
-                              <option>12.30 am</option>
-                              <option>1.00 am</option>
-                              <option>1.30 am</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-group">
-                            <label>End Time</label>
-                            <select name="endTime" [(ngModel)]="flow.endTime" class="form-control">
-                              <option>-</option>
-                              <option>12.00 am</option>
-                              <option>12.30 am</option>
-                              <option>1.00 am</option>
-                              <option>1.30 am</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="add-more mb-3">
-                  <a href="javascript:void(0);" class="add-hours"
-                    ><i class="fa fa-plus-circle"></i> Add More</a
-                  >
-                </div>
-                <div class="submit-section text-center">
-                  <button type="submit" class="btn btn-primary submit-btn">
-                    Save Changes
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Monday Time slot Modal-->
-        <!--Tuesday Time slot Modal-->
-    <div class="  flew"  [style.display]="isViTues ? 'block' : 'none'" >
+    <!--Monday Time slot Modal-->
+    <div class="flew" [style.display]="isViMon ? 'block' : 'none'">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Tuesday Time Slots</h5>
-            <button
-              type="button"
-              class="close"
-              (click)="hideMoTues()"
-            >
+            <h5 class="modal-title">Monday Time Slots</h5>
+            <button type="button" class="close" (click)="hideMoMon()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form (ngSubmit)="submtiMe()">
+            <form (ngSubmit)="subMon()">
               <div class="hours-info">
-                <div class="row form-row hours-cont">
+                <div
+                  class="row form-row hours-cont"
+                  *ngFor="let slot of monSlow; let i = index"
+                >
                   <div class="col-12 col-md-10">
                     <div class="row form-row">
                       <div class="col-12 col-md-6">
                         <div class="form-group">
                           <label>Start Time</label>
-                          <select name="startTime" [(ngModel)]="flow.startTime" class="form-control">
+                          <select
+                            name="startTime"
+                            [(ngModel)]="slot.startTime"
+                            class="form-control"
+                          >
                             <option>-</option>
                             <option>12.00 am</option>
                             <option>12.30 am</option>
@@ -765,7 +932,11 @@
                       <div class="col-12 col-md-6">
                         <div class="form-group">
                           <label>End Time</label>
-                          <select name="endTime" [(ngModel)]="flow.endTime" class="form-control">
+                          <select
+                            name="endTime"
+                            [(ngModel)]="slot.endTime"
+                            class="form-control"
+                          >
                             <option>-</option>
                             <option>12.00 am</option>
                             <option>12.30 am</option>
@@ -780,7 +951,79 @@
               </div>
 
               <div class="add-more mb-3">
-                <a href="javascript:void(0);" class="add-hours"
+                <a (click)="addMoreMon()" class="add-hours"
+                  ><i class="fa fa-plus-circle"></i> Add More</a
+                >
+              </div>
+              <div class="submit-section text-center">
+                <button type="submit" class="btn btn-primary submit-btn">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Monday Time slot Modal-->
+    <!--Tuesday Time slot Modal-->
+    <div class="flew" [style.display]="isViTues ? 'block' : 'none'">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tuesday Time Slots</h5>
+            <button type="button" class="close" (click)="hideMoTues()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="subTues()">
+              <div class="hours-info">
+                <div
+                  class="row form-row hours-cont"
+                  *ngFor="let slot of TuesSlow; let i = index"
+                >
+                  <div class="col-12 col-md-10">
+                    <div class="row form-row">
+                      <div class="col-12 col-md-6">
+                        <div class="form-group">
+                          <label>Start Time</label>
+                          <select
+                            name="startTime"
+                            [(ngModel)]="slot.startTime"
+                            class="form-control"
+                          >
+                            <option>-</option>
+                            <option>12.00 am</option>
+                            <option>12.30 am</option>
+                            <option>1.00 am</option>
+                            <option>1.30 am</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="form-group">
+                          <label>End Time</label>
+                          <select
+                            name="endTime"
+                            [(ngModel)]="slot.endTime"
+                            class="form-control"
+                          >
+                            <option>-</option>
+                            <option>12.00 am</option>
+                            <option>12.30 am</option>
+                            <option>1.00 am</option>
+                            <option>1.30 am</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="add-more mb-3">
+                <a (click)="addMoreTues()" class="add-hours"
                   ><i class="fa fa-plus-circle"></i> Add More</a
                 >
               </div>
@@ -795,95 +1038,33 @@
       </div>
     </div>
     <!--Tuesday Time slot Modal-->
-      <!--Wednesday Time slot Modal-->
-      <div class="  flew"  [style.display]="isViWed ? 'block' : 'none'" >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Wednesday Time Slots</h5>
-              <button
-                type="button"
-                class="close"
-                (click)="hideMoWed()"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form (ngSubmit)="submtiMe()">
-                <div class="hours-info">
-                  <div class="row form-row hours-cont">
-                    <div class="col-12 col-md-10">
-                      <div class="row form-row">
-                        <div class="col-12 col-md-6">
-                          <div class="form-group">
-                            <label>Start Time</label>
-                            <select name="startTime" [(ngModel)]="flow.startTime" class="form-control">
-                              <option>-</option>
-                              <option>12.00 am</option>
-                              <option>12.30 am</option>
-                              <option>1.00 am</option>
-                              <option>1.30 am</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-group">
-                            <label>End Time</label>
-                            <select name="endTime" [(ngModel)]="flow.endTime" class="form-control">
-                              <option>-</option>
-                              <option>12.00 am</option>
-                              <option>12.30 am</option>
-                              <option>1.00 am</option>
-                              <option>1.30 am</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="add-more mb-3">
-                  <a href="javascript:void(0);" class="add-hours"
-                    ><i class="fa fa-plus-circle"></i> Add More</a
-                  >
-                </div>
-                <div class="submit-section text-center">
-                  <button type="submit" class="btn btn-primary submit-btn">
-                    Save Changes
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Wednesday Time slot Modal-->
-        <!--Thursday Time slot Modal-->
-    <div class="  flew"  [style.display]="isViThurs ? 'block' : 'none'" >
+    <!--Wednesday Time slot Modal-->
+    <div class="flew" [style.display]="isViWed ? 'block' : 'none'">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Thursday Time Slots</h5>
-            <button
-              type="button"
-              class="close"
-              (click)="hideMoThurs()"
-            >
+            <h5 class="modal-title">Wednesday Time Slots</h5>
+            <button type="button" class="close" (click)="hideMoWed()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form (ngSubmit)="submtiMe()">
+            <form (ngSubmit)="subWed()">
               <div class="hours-info">
-                <div class="row form-row hours-cont">
+                <div
+                  class="row form-row hours-cont"
+                  *ngFor="let slot of wedSlow; let i = index"
+                >
                   <div class="col-12 col-md-10">
                     <div class="row form-row">
                       <div class="col-12 col-md-6">
                         <div class="form-group">
                           <label>Start Time</label>
-                          <select name="startTime" [(ngModel)]="flow.startTime" class="form-control">
+                          <select
+                            name="startTime"
+                            [(ngModel)]="slot.startTime"
+                            class="form-control"
+                          >
                             <option>-</option>
                             <option>12.00 am</option>
                             <option>12.30 am</option>
@@ -895,7 +1076,11 @@
                       <div class="col-12 col-md-6">
                         <div class="form-group">
                           <label>End Time</label>
-                          <select name="endTime" [(ngModel)]="flow.endTime" class="form-control">
+                          <select
+                            name="endTime"
+                            [(ngModel)]="slot.endTime"
+                            class="form-control"
+                          >
                             <option>-</option>
                             <option>12.00 am</option>
                             <option>12.30 am</option>
@@ -910,7 +1095,79 @@
               </div>
 
               <div class="add-more mb-3">
-                <a href="javascript:void(0);" class="add-hours"
+                <a (click)="addMoreWed()" class="add-hours"
+                  ><i class="fa fa-plus-circle"></i> Add More</a
+                >
+              </div>
+              <div class="submit-section text-center">
+                <button type="submit" class="btn btn-primary submit-btn">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Wednesday Time slot Modal-->
+    <!--Thursday Time slot Modal-->
+    <div class="flew" [style.display]="isViThurs ? 'block' : 'none'">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Thursday Time Slots</h5>
+            <button type="button" class="close" (click)="hideMoThurs()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="subThurs()">
+              <div class="hours-info">
+                <div
+                  class="row form-row hours-cont"
+                  *ngFor="let slot of ThursSlow; let i = index"
+                >
+                  <div class="col-12 col-md-10">
+                    <div class="row form-row">
+                      <div class="col-12 col-md-6">
+                        <div class="form-group">
+                          <label>Start Time</label>
+                          <select
+                            name="startTime"
+                            [(ngModel)]="slot.startTime"
+                            class="form-control"
+                          >
+                            <option>-</option>
+                            <option>12.00 am</option>
+                            <option>12.30 am</option>
+                            <option>1.00 am</option>
+                            <option>1.30 am</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="form-group">
+                          <label>End Time</label>
+                          <select
+                            name="endTime"
+                            [(ngModel)]="slot.endTime"
+                            class="form-control"
+                          >
+                            <option>-</option>
+                            <option>12.00 am</option>
+                            <option>12.30 am</option>
+                            <option>1.00 am</option>
+                            <option>1.30 am</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="add-more mb-3">
+                <a (click)="addMoreThurs()" class="add-hours"
                   ><i class="fa fa-plus-circle"></i> Add More</a
                 >
               </div>
@@ -925,95 +1182,33 @@
       </div>
     </div>
     <!--Thursday Time slot Modal-->
-      <!--Friday Time slot Modal-->
-      <div class="  flew"  [style.display]="isViFri ? 'block' : 'none'" >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Friday Time Slots</h5>
-              <button
-                type="button"
-                class="close"
-                (click)="hideMoFri()"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form (ngSubmit)="submtiMe()">
-                <div class="hours-info">
-                  <div class="row form-row hours-cont">
-                    <div class="col-12 col-md-10">
-                      <div class="row form-row">
-                        <div class="col-12 col-md-6">
-                          <div class="form-group">
-                            <label>Start Time</label>
-                            <select name="startTime" [(ngModel)]="flow.startTime" class="form-control">
-                              <option>-</option>
-                              <option>12.00 am</option>
-                              <option>12.30 am</option>
-                              <option>1.00 am</option>
-                              <option>1.30 am</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="form-group">
-                            <label>End Time</label>
-                            <select name="endTime" [(ngModel)]="flow.endTime" class="form-control">
-                              <option>-</option>
-                              <option>12.00 am</option>
-                              <option>12.30 am</option>
-                              <option>1.00 am</option>
-                              <option>1.30 am</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="add-more mb-3">
-                  <a href="javascript:void(0);" class="add-hours"
-                    ><i class="fa fa-plus-circle"></i> Add More</a
-                  >
-                </div>
-                <div class="submit-section text-center">
-                  <button type="submit" class="btn btn-primary submit-btn">
-                    Save Changes
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Friday Time slot Modal-->
-        <!--Saturday Time slot Modal-->
-    <div class="  flew"  [style.display]="isViSat ? 'block' : 'none'" >
+    <!--Friday Time slot Modal-->
+    <div class="flew" [style.display]="isViFri ? 'block' : 'none'">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Saturday Time Slots</h5>
-            <button
-              type="button"
-              class="close"
-              (click)="hideMoSat()"
-            >
+            <h5 class="modal-title">Friday Time Slots</h5>
+            <button type="button" class="close" (click)="hideMoFri()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form (ngSubmit)="submtiMe()">
+            <form (ngSubmit)="subFri()">
               <div class="hours-info">
-                <div class="row form-row hours-cont">
+                <div
+                  class="row form-row hours-cont"
+                  *ngFor="let slot of FriSlow; let i = index"
+                >
                   <div class="col-12 col-md-10">
                     <div class="row form-row">
                       <div class="col-12 col-md-6">
                         <div class="form-group">
                           <label>Start Time</label>
-                          <select name="startTime" [(ngModel)]="flow.startTime" class="form-control">
+                          <select
+                            name="startTime"
+                            [(ngModel)]="slot.startTime"
+                            class="form-control"
+                          >
                             <option>-</option>
                             <option>12.00 am</option>
                             <option>12.30 am</option>
@@ -1025,7 +1220,11 @@
                       <div class="col-12 col-md-6">
                         <div class="form-group">
                           <label>End Time</label>
-                          <select name="endTime" [(ngModel)]="flow.endTime" class="form-control">
+                          <select
+                            name="endTime"
+                            [(ngModel)]="slot.endTime"
+                            class="form-control"
+                          >
                             <option>-</option>
                             <option>12.00 am</option>
                             <option>12.30 am</option>
@@ -1040,7 +1239,81 @@
               </div>
 
               <div class="add-more mb-3">
-                <a href="javascript:void(0);" class="add-hours"
+                <a (click)="addMoreFri()" class="add-hours"
+                  ><i class="fa fa-plus-circle"></i> Add More</a
+                >
+              </div>
+              <div class="submit-section text-center">
+                <button type="submit" class="btn btn-primary submit-btn">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Friday Time slot Modal-->
+    <!--Saturday Time slot Modal-->
+    <div class="flew" [style.display]="isViSat ? 'block' : 'none'">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Saturday Time Slots</h5>
+            <button type="button" class="close" (click)="hideMoSat()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="subSat()">
+              <div class="hours-info">
+                <div
+                  class="row form-row hours-cont"
+                  *ngFor="let slot of satSlow; let i = index"
+                >
+                  <div class="col-12 col-md-10">
+                    <div class="row form-row">
+                      <div class="col-12 col-md-6">
+                        <div class="form-group" >
+                          <label>Start Time</label>
+                          <select
+                            name="startTime"
+                            [(ngModel)]="slot.startTime"
+                            [value]=""
+
+                            class="form-control"
+                          >
+                            <option>-</option>
+                            <option>12.00 am</option>
+                            <option>12.30 am</option>
+                            <option>1.00 am</option>
+                            <option>1.30 am</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="form-group">
+                          <label>End Time</label>
+                          <select
+                            name="endTime"
+                            [(ngModel)]="slot.endTime"
+                            class="form-control"
+                          >
+                            <option>-</option>
+                            <option>12.00 am</option>
+                            <option>12.30 am</option>
+                            <option>1.00 am</option>
+                            <option>1.30 am</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="add-more mb-3">
+                <a (click)="addMoreSat()" class="add-hours"
                   ><i class="fa fa-plus-circle"></i> Add More</a
                 >
               </div>
@@ -1058,144 +1331,7 @@
     <!-- /Add Time Slot Modal -->
 
     <!-- Edit Time Slot Modal -->
-    <div class="modal fade custom-modal" id="edit_time_slot">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit Time Slots</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="hours-info">
-                <div class="row form-row hours-cont">
-                  <div class="col-12 col-md-10">
-                    <div class="row form-row">
-                      <div class="col-12 col-md-6">
-                        <div class="form-group">
-                          <label>Start Time</label>
-                          <select class="form-control">
-                            <option>-</option>
-                            <option selected>12.00 am</option>
-                            <option>12.30 am</option>
-                            <option>1.00 am</option>
-                            <option>1.30 am</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <div class="form-group">
-                          <label>End Time</label>
-                          <select class="form-control">
-                            <option>-</option>
-                            <option>12.00 am</option>
-                            <option selected>12.30 am</option>
-                            <option>1.00 am</option>
-                            <option>1.30 am</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row form-row hours-cont">
-                  <div class="col-12 col-md-10">
-                    <div class="row form-row">
-                      <div class="col-12 col-md-6">
-                        <div class="form-group">
-                          <label>Start Time</label>
-                          <select class="form-control">
-                            <option>-</option>
-                            <option>12.00 am</option>
-                            <option selected>12.30 am</option>
-                            <option>1.00 am</option>
-                            <option>1.30 am</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <div class="form-group">
-                          <label>End Time</label>
-                          <select class="form-control">
-                            <option>-</option>
-                            <option>12.00 am</option>
-                            <option>12.30 am</option>
-                            <option selected>1.00 am</option>
-                            <option>1.30 am</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-2">
-                    <label class="d-md-block d-sm-none d-none">&nbsp;</label
-                    ><a href="#" class="btn btn-danger trash"
-                      ><i class="far fa-trash-alt"></i
-                    ></a>
-                  </div>
-                </div>
-
-                <div class="row form-row hours-cont">
-                  <div class="col-12 col-md-10">
-                    <div class="row form-row">
-                      <div class="col-12 col-md-6">
-                        <div class="form-group">
-                          <label>Start Time</label>
-                          <select class="form-control">
-                            <option>-</option>
-                            <option>12.00 am</option>
-                            <option>12.30 am</option>
-                            <option selected>1.00 am</option>
-                            <option>1.30 am</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-12 col-md-6">
-                        <div class="form-group">
-                          <label>End Time</label>
-                          <select class="form-control">
-                            <option>-</option>
-                            <option>12.00 am</option>
-                            <option>12.30 am</option>
-                            <option>1.00 am</option>
-                            <option selected>1.30 am</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-2">
-                    <label class="d-md-block d-sm-none d-none">&nbsp;</label
-                    ><a href="#" class="btn btn-danger trash"
-                      ><i class="far fa-trash-alt"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="add-more mb-3">
-                <a href="javascript:void(0);" class="add-hours"
-                  ><i class="fa fa-plus-circle"></i> Add More</a
-                >
-              </div>
-              <div class="submit-section text-center">
-                <button type="submit" class="btn btn-primary submit-btn">
-                  Save Changes
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="modal fade custom-modal" id="edit_time_slot"></div>
     <!-- /Edit Time Slot Modal -->
 
     <!-- jQuery -->
