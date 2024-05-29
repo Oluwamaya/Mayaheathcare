@@ -3,6 +3,8 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { UserServicesService } from '../services/user-services.service';
+import { DocServiceService } from '../services/doc-service.service';
 interface Slot {
   startTime: string;
   endTime: string;
@@ -20,7 +22,7 @@ interface Slot {
   styleUrl: './schedule-timing.component.css'
 })
 export class ScheduleTimingComponent {
-  constructor(public http: HttpClient){}
+  constructor(public http: HttpClient , public getDocInfo: DocServiceService){}
   public userInfo : any = {}
   public fetchSchedule : any = []
   isSundayAvailable(): boolean {
@@ -47,15 +49,15 @@ isSaturdayAvailable(): boolean {
 
 
   ngOnInit() {
-    this.getUserInfo();
+   
+    this.userInfo = this.getDocInfo.getDocInfo()
+    console.log(this.userInfo);
+    
     this.fetchScheduleData()
   }
 
 
-  getUserInfo() {
-    this.userInfo = JSON.parse(localStorage.getItem("docInfo")!) || {};
-    console.log(this.userInfo);   
-  }
+
   fetchScheduleData(): void {
     const doctorId =  this.userInfo.id;
     // Make a GET request to fetch schedule timing data

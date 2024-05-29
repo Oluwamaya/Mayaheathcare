@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { UserServicesService } from '../services/user-services.service';
 
 @Component({
   selector: 'app-profile-settings',
@@ -16,15 +17,14 @@ export class ProfileSettingsComponent {
   public newInfo: any = {};
   public selectedFile: File | null = null;
 
-  constructor(public http: HttpClient , private router : Router) {}
+  constructor(public http: HttpClient , private router : Router, public userService: UserServicesService) {}
 
   ngOnInit() {
     this.getUserInfo();
   }
-
+  
   getUserInfo() {
-    this.userInfo = JSON.parse(localStorage.getItem("allInfo")!) || {};
-    console.log(this.userInfo);
+    this.userInfo = this.userService.getPatientInfo()
     this.newInfo = { ...this.userInfo };
   }
 

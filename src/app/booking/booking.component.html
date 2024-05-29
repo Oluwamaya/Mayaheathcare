@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../assets/img/favicon.png" rel="icon" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="../../assets/plugins/fontawesome/css/fontawesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../assets/plugins/fontawesome/css/all.min.css"
+    />
+
+    <!-- Fancybox CSS -->
+    <link
+      rel="stylesheet"
+      href="../../assets/plugins/fancybox/jquery.fancybox.min.css"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div>
+            
+
+            <main class="bg-danger text-light d-flex">
+                <ul class="d-flex justify-content-between align-items-center bg-dark" *ngFor="let el of dates">
+                    <li class="d-flex justify-content-between align-items-center">{{el}}</li>
+                </ul>
+            </main>
+
+            <main>
+                <div class="schedule-container">
+                    <h3>Next 7 Days</h3>
+                    <div class="days-container">
+                      <div class="day" *ngFor="let day of days; let i = index">
+                        <div class="day-header">{{ day.displayDate }}</div>
+                        <div class="day-body">
+                          <label for="startTime-{{i}}">Start Time:</label>
+                          <input type="time" id="startTime-{{i}}" [(ngModel)]="day.startTime" />
+                          <label for="endTime-{{i}}">End Time:</label>
+                          <input type="time" id="endTime-{{i}}" [(ngModel)]="day.endTime" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+            </main>
+        </div>
+    </main>
+</body>
+</html>

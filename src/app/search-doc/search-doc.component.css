@@ -1,0 +1,23 @@
+.ttn{
+    background-color:rgb(21,85,141);
+    box-shadow: 1px 1px 2px 1px white;
+    color: white;
+    border: none;
+}
+.ttn:hover{
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    color:rgb(21,85,141) ;
+}
+*{
+  cursor: pointer;  
+}
+.fek{
+    background-color: red;
+    margin: 20px 0;
+}
+.ket{
+    height: 20px;
+    width: 20px;
+}

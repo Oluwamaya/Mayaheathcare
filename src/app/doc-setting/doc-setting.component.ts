@@ -6,6 +6,8 @@ import { Router, RouterModule } from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { UserServicesService } from '../services/user-services.service';
+import { DocServiceService } from '../services/doc-service.service';
 
 @Component({
   selector: 'app-doc-setting',
@@ -21,7 +23,7 @@ export class DocSettingComponent {
   public newInfo: any = {};
   public selectedFile: File | null = null;
 
-  constructor(public http: HttpClient , private router : Router) {}
+  constructor(public http: HttpClient , private router : Router, public docService : DocServiceService) {}
 
   ngOnInit() {
     this.getUserInfo();
@@ -29,7 +31,7 @@ export class DocSettingComponent {
 
 
   getUserInfo() {
-    this.userInfo = JSON.parse(localStorage.getItem("docInfo")!) || {};
+    this.userInfo = this.docService.getDocInfo();
     console.log(this.userInfo);
     this.newInfo = { ...this.userInfo };      
   }
