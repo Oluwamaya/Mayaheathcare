@@ -34,8 +34,7 @@ export class ProfileSettingsComponent {
     
     if (files.length > 0) {
       this.selectedFile = files[0];
-      console.log(this.selectedFile);
-      
+      console.log(this.selectedFile); 
     }
   }
 

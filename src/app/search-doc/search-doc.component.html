@@ -173,7 +173,7 @@
                     <div class="doc-info-left my-2 ">
                       <div class="doctor-img">
                         <a href="doctor-profile.html">
-                          <img class="img-fluid" [src]="el.profilepic" alt="User Image"/>
+                          <img class="img-fluid" [src]="el.profilePic" alt="User Image"/>
 						  <!-- <img [src]="el.profilepic" alt="try it" srcset=""> -->
                         </a>
                       </div>
@@ -280,12 +280,13 @@
                         </ul>
                       </div>
                       <div class="clinic-booking">
-                        <a class="view-pro-btn" routerLink="{{el.email}}"
+                        <a class="view-pro-btn" routerLink="details/{{el.email}}"
                           >View Profile</a
                         >
-                        <a class="apt-btn"  routerLink="{{'booking/'+ el.id}}"
+                        <a class="apt-btn"routerLink="{{el.email}}"
                           >Book Appointment</a
                         >
+                        <a href="" routerLink="maya">press</a>
                       </div>
                     </div>
                   </div>

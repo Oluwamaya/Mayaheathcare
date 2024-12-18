@@ -15,7 +15,7 @@ interface Doctor {
   lastname: string;
   email: string;
   specialization: string;
-  profilepic: string;
+  profilePic: string;
   state: string;
   country: string;
   services: string;
@@ -46,7 +46,7 @@ export class SearchDocComponent implements OnInit {
     { name: 'Neurology', selected: false },
     { name: 'Dentist', selected: false },
     { name: 'Orthopedic', selected: false },
-    { name: 'Cardiologist', selected: false }
+    { name: 'Cardiology', selected: false }
   ];
   
   ngOnInit() {
@@ -77,7 +77,7 @@ export class SearchDocComponent implements OnInit {
   fetchAllDoctors(): void {
     this.http.post<Doctor[]>("http://localhost/healthbackend/patientProfile/searchDoctor.php", {}).subscribe(
       (response) => {
-        console.log(response);
+        console.log(response[0].profilePic);
         if (Array.isArray(response)) {
           this.searchDoc = response;
           this.noDoc = '';
@@ -110,7 +110,7 @@ export class SearchDocComponent implements OnInit {
 
     this.http.post<any>("http://localhost/healthbackend/patientProfile/searchDoctor.php", formData).subscribe(
       (response) => {
-        console.log(response);
+        console.log(response[0].profilePic);
         if (Array.isArray(response)) {
           this.searchDoc = response;
           this.noDoc = '';

@@ -26,18 +26,22 @@ export const routes: Routes = [
     {path: "doctor-register", component: DoctorRegisterComponent },
     {path: "patient-login", component: PatientLoginComponent},
     {path: "doctor-login", component: DoctorLoginComponent},
-    {path: "forgetPassword",component: ForgetPasswordComponent},
+    // {path: "forgetPassword",component: ForgetPasswordComponent},
     {path: "patientDashboard",children:[
         {path : "", component: PatientdashboardComponent},
         {path: "profileSettings", component: ProfileSettingsComponent},
-        {path: 'booking/:id', component: BookingComponent},
-    //   {path: "booking",children: [
-    //     {path : "", component: BookingComponent},
-    //   ] },
+        // {path:"../"}
+          {path: "booking",children: [
+                {path : "", component: BookingComponent},
+              ] },
+            
+            {path : "search-doctor", children: [
+                {path : "", component:SearchDocComponent}, 
+                { path: 'details/:id', component: DoctordisplayinformationComponent },
+                {path: ':id', component: BookingComponent},
+                {path: 'details/:id/:id', redirectTo: ":id"},
 
-      {path : "search-doctor", children: [
-        {path : "", component:SearchDocComponent}, 
-        { path: ':id', component: DoctordisplayinformationComponent },
+                
         // {path: "sly/:id", component: DoctordisplayinformationComponent}
     ]},
     ]},

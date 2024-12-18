@@ -39,7 +39,7 @@ export class PatientdashboardComponent {
         console.log("User information:", response);
         localStorage.setItem("allInfo",JSON.stringify(response.user))
         this.userInfo = response.user
-        console.log(this.userInfo.profilePic);
+        // console.log(this.userInfo.profilePic);
         
       },
       (error) => {
