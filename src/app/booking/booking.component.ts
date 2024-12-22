@@ -20,31 +20,45 @@ interface ScheduleDay {
 })
 export class BookingComponent {
   constructor(private http : HttpClient , private datePipe : DatePipe ,private actRoute : ActivatedRoute){}
+  public docInfo : any = {} 
 
-  public dates: any[] = [] 
-  // public days: any[] = [];
-  public days: ScheduleDay[] = [];
+
+  public docSchedule : any = {} 
+  
     
   ngOnInit(){
-    this.generateDays();
+   
+    this.fetchDocInfo()
 
   }
-  fetchDocSchedule(){
-     const id = this.actRoute.snapshot.params['id']
-     console.log(id);
+  fetchDocInfo(){
+   
+    const id = this.actRoute.snapshot.params['id']
+    
+    const baseUrl = "http://localhost/healthbackend/patientProfile/booking.php"; 
+    const url = `${baseUrl}?id=${id}`;
+    this.http.get<any>(url).subscribe((response)=>{
+    //  console.log(response);
+     this.docInfo = response
+     this.docSchedule = this.docInfo.schedule
+     console.log(this.docSchedule);
      
+     
+    },((error)=>{
+         console.log(error);    
+    }))
   }
  
   
-  generateDays() {
-    const today = new Date();
-    for (let i = 0; i < 7; i++) {
-      const futureDate = new Date(today);
-      futureDate.setDate(today.getDate() + i);
-      const displayDate = this.datePipe.transform(futureDate, 'EEE, dd MMM yyyy') || '';
-      this.days.push({ date: futureDate.toISOString(), displayDate, startTime: '', endTime: '' });
-    }
-  }
+  // generateDays() {
+  //   const today = new Date();
+  //   for (let i = 0; i < 7; i++) {
+  //     const futureDate = new Date(today);
+  //     futureDate.setDate(today.getDate() + i);
+  //     const displayDate = this.datePipe.transform(futureDate, 'EEE, dd MMM yyyy') || '';
+  //     this.days.push({ date: futureDate.toISOString(), displayDate, startTime: '', endTime: '' });
+  //   }
+  // }
   // Method to set schedule for a specific day
   setSchedule(dayIndex: number, schedule: string) {
     // this.days[dayIndex].schedule = schedule;

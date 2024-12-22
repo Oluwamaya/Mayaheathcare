@@ -2,6 +2,8 @@
 .nav-link{
     color: green;
     cursor: pointer; /* Change to your desired color */
+    list-style : none !;
+    text-decoration : none;
   }
   .flew{
     
@@ -13,7 +15,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-
+  
   }
   .edit-link{
     color: rgb(0, 204, 255) !important;
@@ -21,4 +23,14 @@
     
   }
 
-  
+  .nav{
+    display: flex ;
+   
+    align-items: center;
+    background-color: blue ;
+    justify-content :space-around;
+  }
+  .nav-item{
+    list-style : none ;
+
+  }

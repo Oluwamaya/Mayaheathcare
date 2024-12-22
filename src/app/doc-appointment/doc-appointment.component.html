@@ -1,64 +1,142 @@
 <!-- Day Time slot Modals -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="../../assets/img/favicon.png" rel="icon" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+
+  <!-- Fontawesome CSS -->
+  <link
+    rel="stylesheet"
+    href="../../assets/plugins/fontawesome/css/fontawesome.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="../../assets/plugins/fontawesome/css/all.min.css"
+  />
+
+  <!-- Select2 CSS -->
+  <link
+    rel="stylesheet"
+    href="../../assets/plugins/select2/css/select2.min.css"
+  />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+
+
+</head>
+<body>
+
+  
   <div class="schedule-nav">
     <ul class="nav nav-tabs nav-justified">
       <li class="nav-item" *ngFor="let day of daysOfWeek">
-        <a (click)="toggleVisibility(day)" class="nav-link">{{day}}</a>
+        <a
+          class="nav-link"
+          [class.active]="activeDay === day"
+          (click)="setActiveDay(day)"
+
+        >
+          {{ day | titlecase }}
+        </a>
       </li>
     </ul>
   </div>
-
-  <!-- Your HTML template -->
-<div *ngFor="let day of daysOfWeek" [style.display]="isViDays[day] ? 'block' : 'none'" class="modal fade" id="{{day}}Modal" tabindex="-1" role="dialog" [attr.aria-labelledby]="'{{day}}ModalLabel'" aria-hidden="true">
+  
+  <!-- Day Time Slot Modals -->
+  <div
+    *ngFor="let day of daysOfWeek"
+    class="modal fade"
+    [id]="day + 'Modal'"
+    tabindex="-1"
+    role="dialog"
+    [attr.aria-labelledby]="day + 'ModalLabel'"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">{{day | titlecase}} Time Slots</h5>
-          <button type="button" class="close" (click)="hideModal(day)">
+          <h5 class="modal-title">{{ day | titlecase }} Time Slots</h5>
+          <button
+            type="button" 
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <form (ngSubmit)="submitAppointment(day)">
             <div class="hours-info">
-                <div *ngFor="let timeSlot of appointments[day]; let index = index" class="row form-row hours-cont">
-                    
-                    <div class="col-12 col-md-6">
-                      <div class="form-group">
-                        <label>Start Time</label>
-                        <select name="startTime" [(ngModel)]="timeSlot.startTime" class="form-control">
-                          <option>-</option>
-                          <option>12.00 am</option>
-                          <option>12.30 am</option>
-                          <option>1.00 am</option>
-                          <option>1.30 am</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <div class="form-group">
-                        <label>End Time</label>
-                        <select name="endTime" [(ngModel)]="timeSlot.endTime" class="form-control">
-                          <option>-</option>
-                          <option>12.00 am</option>
-                          <option>12.30 am</option>
-                          <option>1.00 am</option>
-                          <option>1.30 am</option>
-                        </select>
-                      </div>
-                    </div>
+              <div
+                *ngFor="let timeSlot of appointments[day]; let i = index"
+                class="row form-row hours-cont"
+              >
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Start Time</label>
+                    <select
+                      name="startTime"
+                      [(ngModel)]="timeSlot.startTime"
+                      class="form-control"
+                    >
+                      <option>-</option>
+                      <option>12:00 AM</option>
+                      <option>12:30 AM</option>
+                      <option>1:00 AM</option>
+                      <option>1:30 AM</option>
+                    </select>
                   </div>
-                  <div class="col-12">
-                    <!-- <button type="button" class="btn btn-danger"  (click)="deleteTimeSlot({ day: day, index: index })">Delete</button> -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>End Time</label>
+                    <select
+                      name="endTime"
+                      [(ngModel)]="timeSlot.endTime"
+                      class="form-control"
+                    >
+                      <option>-</option>
+                      <option>12:00 AM</option>
+                      <option>12:30 AM</option>
+                      <option>1:00 AM</option>
+                      <option>1:30 AM</option>
+                    </select>
                   </div>
+                </div>
+                <div class="col-12 text-right">
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    (click)="deleteTimeSlot(day, i)"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
             <div class="add-more mb-3">
-              <a href="javascript:void(0);" class="add-hours" (click)="addTimeSlot(day )">
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                (click)="addTimeSlot(day)"
+              >
                 <i class="fa fa-plus-circle"></i> Add More
-              </a>
+              </button>
             </div>
             <div class="submit-section text-center">
-              <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+              <button type="submit" class="btn btn-primary submit-btn">
+                Save Changes
+              </button>
             </div>
           </form>
         </div>
@@ -66,6 +144,27 @@
     </div>
   </div>
   
+  
+
+
+<script src="../../assets/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JS -->
+<script src="../../assets/js/popper.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+
+<!-- Sticky Sidebar JS -->
+<script src="../../assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+<script src="../../assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+<!-- Select2 JS -->
+<script src="../../assets/plugins/select2/js/select2.min.js"></script>
+
+<!-- Custom JS -->
+<script src="../../assets/js/script.js"></script>
+</body>
+
+</html>
   
   
   <!-- /Day Time slot Modals -->

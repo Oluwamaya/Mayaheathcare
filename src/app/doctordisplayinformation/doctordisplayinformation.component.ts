@@ -40,7 +40,7 @@ export class DoctordisplayinformationComponent {
     const id = this.actRoute.snapshot.params['id']
     console.log(id)
     const baseUrl = "http://localhost/healthbackend/doctorProfile/displayDocInfo.php"; 
-    const url = `${baseUrl}?email=${id}`;
+    const url = `${baseUrl}?id=${id}`;
     this.http.get<any>(url).subscribe((response)=>{
      console.log(response);
      this.docInfo = response
